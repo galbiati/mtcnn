@@ -16,6 +16,23 @@ Pretrained weights are included in `mtcnn.pth`.
 - Inputs must be batched and in `(N, C, H, W)` format
 - Channel order should be RGB (watch out OpenCV users)
 
+### Model output structure
+Each item in a batch may have a variable number of output bounding boxes, so a tensor maintaining a batch axis cannot be used. Instead, the model `MTCNN` will output a *flattened matrix* with the following stucture:
+
+> Size: [num_boxes, 20]
+>
+> Each row is a single bounding box.
+>
+> Column 0 is batch index.
+> 
+> Columns 1 - 4 are bounding box top left and bottom right coordinates.
+>
+> Column 5 is score for that box.
+>
+> Columns 6-10 are offset values
+>
+> Columns 10-20 are landmark coordinates (same order as output by `ONet`)
+
 
 ## Example
 ```python
@@ -54,7 +71,7 @@ bounding_boxes = mtcnn(image)
 ## Requirements
 - `numpy>=1.17.1`
 - `torch>=1.3.1`
-- `torchvision?=0.4.2`
+- `torchvision>=0.4.2`
 
 Python 3 only; 3.7+ recommended.
 
