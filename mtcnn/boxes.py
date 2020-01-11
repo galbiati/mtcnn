@@ -322,4 +322,7 @@ def crop_boxes(image, bounding_boxes, size=24):
 
         crops.append(crop.squeeze(0))
 
-    return torch.stack(crops)
+    if len(crops) > 0:
+        return torch.stack(crops)
+    else:
+        return []
