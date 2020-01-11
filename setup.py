@@ -11,6 +11,10 @@ from setuptools import find_packages, setup
 # Internal libraries
 
 
+with open('requirements.txt', 'r') as f:
+    requirements = f.readlines()
+
+
 setup(
     name='mtcnn',
     version='0.1.0',
@@ -21,4 +25,5 @@ setup(
     description='Pure PyTorch MTCNN',
     long_description=open('README.md').read(),
     include_package_data=True,
+    install_requires=requirements
 )
