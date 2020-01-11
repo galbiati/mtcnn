@@ -21,6 +21,7 @@ setup(
     author='Gianni Galbiati',
     author_email='galbiatig@gmail.com',
     packages=find_packages(),
+    package_data={'mtcnn': ['mtcnn.pth']},
     license='LICENSE.txt',
     description='Pure PyTorch MTCNN',
     long_description=open('README.md').read(),
