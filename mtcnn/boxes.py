@@ -9,8 +9,6 @@
 import torch
 import torch.nn as nn
 
-from torchvision.ops import nms
-
 # Internal libraries
 
 
@@ -149,7 +147,7 @@ def batched_nms(boxes, n, threshold, mode='union'):
         scores_ = boxes[selector, 5]
 
         if mode == 'union':
-            keep = nms(boxes_, scores_, iou_threshold=threshold)
+            keep = min_nms(boxes_, scores_, iou_threshold=threshold)
         elif mode == 'min':
             keep = min_nms(boxes_, scores_, iou_threshold=threshold)
         else:
