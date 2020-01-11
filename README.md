@@ -8,6 +8,8 @@ If you use CUDA, everything stays on device through end of inference.
 
 Does NOT include file read/pipelining - implement this how you want. 
 
+Pretrained weights are included in `mtcnn.pth`.
+
 ### Preprocessing requirements
 - Images must be dtype `float32`
 - To normalize from `uint8` image, do `(image - 127.5) / 128`
@@ -58,4 +60,4 @@ Python 3 only; 3.7+ recommended.
 
 
 ## Credit
-Adapted from [Dan Antoshchenko's implementation](https://github.com/TropComplique/mtcnn-pytorch)
+Adapted from [Dan Antoshchenko's implementation](https://github.com/TropComplique/mtcnn-pytorch).
