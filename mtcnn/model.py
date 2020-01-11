@@ -38,7 +38,7 @@ class MTCNN(nn.Module):
         Columns 6-10 are offset values.
     //
     """
-    def __init__(self,
+    def __init__(self, pretrained=True,
                  min_face_size=20, min_detection_size=12,
                  score_thresholds=(.6, .7, .8), iou_thresholds=(.7, .7, .7),
                  factor=math.sqrt(.5)):
@@ -48,6 +48,10 @@ class MTCNN(nn.Module):
         self.pnet = PNet()
         self.rnet = RNet()
         self.onet = ONet()
+
+        if pretrained:
+            state_dict = torch.load('./mtcnn.pth')
+            self.load_state_dict(state_dict)
 
         self.min_face_size = min_face_size
         self.min_detection_size = min_detection_size
