@@ -60,13 +60,10 @@ path_to_test_image = '...'
 
 device = torch.device('...')    # Use 'cuda' for cuda, 'cpu' for cpu
 
-# Load model
-mtcnn = MTCNN()
-
-state_dict = torch.load(path_to_saved_model)
-mtcnn.load(state_dict)
-mtcnn.eval()
+# Load model - use `pretrained=False` if you did not pip install!
+mtcnn = MTCNN(pretrained=True)
 mtcnn.to(device)
+mtcnn.eval()
 
 # Placeholder data loading pipeline
 image = cv2.imread(path_to_test_image, cv2.IMREAD_COLOR)    # unit8, BGR, HWC
