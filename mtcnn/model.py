@@ -5,6 +5,7 @@
 
 # Standard libraries
 import math
+import os
 
 # External libraries
 import torch
@@ -50,7 +51,9 @@ class MTCNN(nn.Module):
         self.onet = ONet()
 
         if pretrained:
-            state_dict = torch.load('./mtcnn.pth')
+            dirname, _ = os.path.split(__file__)
+            model_path = os.path.join(dirname, 'mtcnn.pth')
+            state_dict = torch.load(model_path)
             self.load_state_dict(state_dict)
 
         self.min_face_size = min_face_size
