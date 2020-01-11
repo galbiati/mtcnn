@@ -10,6 +10,18 @@ Does NOT include file read/pipelining - implement this how you want.
 
 Pretrained weights are included in `mtcnn.pth`.
 
+## Requirements
+Python 3.7+
+
+- `numpy>=1.17.1`
+- `torch>=1.3.1`
+- `torchvision>=0.4.2`
+
+## Installation
+```bash
+git clone https://github.com/galbiati/mtcnn.git && cd mtcnn && pip install -U . && cd ..
+```
+
 ### Preprocessing requirements
 - Images must be dtype `float32`
 - To normalize from `uint8` image, do `(image - 127.5) / 128`
@@ -66,16 +78,6 @@ image = image.transpose(2, 0, 1)                            # Switch to CHW
 image = torch.as_tensor(image, dtype=torch.float32, device=device).unsqueeze(0)
 bounding_boxes = mtcnn(image)
 ```
-
-
-## Requirements
-Python 3.7+
-
-- `numpy>=1.17.1`
-- `torch>=1.3.1`
-- `torchvision>=0.4.2`
-
-
 
 ## Credit
 Adapted from [Dan Antoshchenko's implementation](https://github.com/TropComplique/mtcnn-pytorch).
