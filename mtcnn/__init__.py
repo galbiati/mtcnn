@@ -8,3 +8,4 @@
 # External libraries
 
 # Internal libraries
+from .model import MTCNN
