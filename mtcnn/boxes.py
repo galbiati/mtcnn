@@ -286,6 +286,9 @@ def prepare_crop_params(bounding_boxes, image_height, image_width):
         [x0, x1, y0, y1, batch_index]
     """
 
+    if len(bounding_boxes) == 0:
+        return []
+
     x0, y0, x1, y1 = [bounding_boxes[:, i] for i in range(1, 5)]
 
     # Truncate bottom right
@@ -322,4 +325,7 @@ def crop_boxes(image, bounding_boxes, size=24):
 
         crops.append(crop.squeeze(0))
 
-    return torch.stack(crops)
+    if len(crops) > 0:
+        return torch.stack(crops)
+    else:
+        return []

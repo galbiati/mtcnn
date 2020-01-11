@@ -97,6 +97,10 @@ class MTCNN(nn.Module):
             bounding_boxes.append(boxes)
 
         bounding_boxes = [i for i in bounding_boxes if i is not None]
+
+        if len(bounding_boxes) == 0:
+            return torch.tensor([], dtype=torch.long)
+
         bounding_boxes = torch.cat(bounding_boxes, dim=0)
 
         bounding_boxes = batched_nms(bounding_boxes, n,
@@ -111,6 +115,9 @@ class MTCNN(nn.Module):
 
     def run_rnet(self, image, bounding_boxes):
         """Run RNet and return bounding boxes."""
+        if len(bounding_boxes) == 0:
+            return torch.tensor([], dtype=torch.float32)
+
         n, c, h, w = image.size()
 
         crops = crop_boxes(image, bounding_boxes, size=24)
@@ -137,7 +144,7 @@ class MTCNN(nn.Module):
         crops = crop_boxes(image, bounding_boxes, size=48)
 
         if len(crops) == 0:
-            return None
+            return []
 
         landmarks, offsets, scores = self.onet(crops)
 
