@@ -1,6 +1,6 @@
 # Pure PyTorch MTCNN
 
-MTCNN end-to-end in PyTorch, as a single module.
+[MTCNN](https://arxiv.org/abs/1604.02878) end-to-end in PyTorch, as a single module.
 
 Supports batched inputs by adding a column to the bounding box matrix for batch index.
 
