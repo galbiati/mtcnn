@@ -100,7 +100,7 @@ class MTCNN(nn.Module):
 
         if len(bounding_boxes) == 0:
             return torch.tensor([], dtype=torch.long)
-        
+
         bounding_boxes = torch.cat(bounding_boxes, dim=0)
 
         bounding_boxes = batched_nms(bounding_boxes, n,
