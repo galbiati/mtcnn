@@ -17,7 +17,7 @@ with open('requirements.txt', 'r') as f:
 
 setup(
     name='mtcnn',
-    version='0.1.0',
+    version='1.0.0',
     author='Gianni Galbiati',
     author_email='galbiatig@gmail.com',
     packages=find_packages(),

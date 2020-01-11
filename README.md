@@ -55,10 +55,7 @@ import torch
 from mtcnn import MTCNN
 
 # Config
-path_to_saved_model = '...' # Fill in your own paths here
-path_to_test_image = '...'
-
-device = torch.device('...')    # Use 'cuda' for cuda, 'cpu' for cpu
+device = torch.device('...')    # Whatever
 
 # Load model - use `pretrained=False` if you did not pip install!
 mtcnn = MTCNN(pretrained=True)
@@ -66,6 +63,7 @@ mtcnn.to(device)
 mtcnn.eval()
 
 # Placeholder data loading pipeline
+path_to_test_image = '...'                                  # Whatever
 image = cv2.imread(path_to_test_image, cv2.IMREAD_COLOR)    # unit8, BGR, HWC
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)              # Convert to RGB
 image = (image.astype(np.float32) - 127.5) / 128            # Convert to float32 and normalize
