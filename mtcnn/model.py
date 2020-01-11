@@ -115,6 +115,9 @@ class MTCNN(nn.Module):
 
     def run_rnet(self, image, bounding_boxes):
         """Run RNet and return bounding boxes."""
+        if len(bounding_boxes) == 0:
+            return torch.tensor([], dtype=torch.float32)
+
         n, c, h, w = image.size()
 
         crops = crop_boxes(image, bounding_boxes, size=24)
