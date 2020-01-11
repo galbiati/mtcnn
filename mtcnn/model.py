@@ -97,6 +97,10 @@ class MTCNN(nn.Module):
             bounding_boxes.append(boxes)
 
         bounding_boxes = [i for i in bounding_boxes if i is not None]
+
+        if len(bounding_boxes) == 0:
+            return torch.tensor([], dtype=torch.long)
+        
         bounding_boxes = torch.cat(bounding_boxes, dim=0)
 
         bounding_boxes = batched_nms(bounding_boxes, n,
