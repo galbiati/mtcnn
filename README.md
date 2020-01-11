@@ -69,11 +69,12 @@ bounding_boxes = mtcnn(image)
 
 
 ## Requirements
+Python 3.7+
+
 - `numpy>=1.17.1`
 - `torch>=1.3.1`
 - `torchvision>=0.4.2`
 
-Python 3 only; 3.7+ recommended.
 
 
 ## Credit
