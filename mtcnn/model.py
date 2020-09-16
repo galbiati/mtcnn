@@ -144,7 +144,7 @@ class MTCNN(nn.Module):
         crops = crop_boxes(image, bounding_boxes, size=48)
 
         if len(crops) == 0:
-            return []
+            return torch.tensor([], dtype=torch.long)
 
         landmarks, offsets, scores = self.onet(crops)
 
