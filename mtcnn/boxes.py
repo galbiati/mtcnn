@@ -93,7 +93,7 @@ def min_nms(boxes, scores, iou_threshold=0.5, mode='min'):
 def batched_nms(boxes, n, threshold, mode='union'):
     """Applies NMS in a batched fashion, only comparing boxes from same item.
 
-    NB: there is a (pretty sneaky) batched NMS function available
+    NB: there is a (sneaky) batched NMS function available
         at torchvision.ops.boxes.batched_nms
 
         However, since there are some differences
